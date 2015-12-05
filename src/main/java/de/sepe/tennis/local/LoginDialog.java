@@ -59,13 +59,13 @@ public final class LoginDialog extends JDialog {
         double sizes[][] = { { 5, TableLayoutConstants.PREFERRED, 5, TableLayoutConstants.FILL, 5 },
                 { 5, TableLayoutConstants.PREFERRED, 5, TableLayoutConstants.PREFERRED, 5, TableLayoutConstants.PREFERRED, 5 } };
         this.getContentPane().setLayout(new TableLayout(sizes));
-        this.getContentPane().add(labUser, "1, 1, r");
-        this.getContentPane().add(labPassword, "1, 3, r");
+        this.getContentPane().add(labUser, "1, 1, r, t");
+        this.getContentPane().add(labPassword, "1, 3, r, t");
 
-        this.getContentPane().add(txtUser, "3, 1, r");
-        this.getContentPane().add(pwdPassword, "3, 3, r");
+        this.getContentPane().add(txtUser, "3, 1, r, t");
+        this.getContentPane().add(pwdPassword, "3, 3, r, t");
 
-        this.getContentPane().add(butLogin, "3, 5, r");
+        this.getContentPane().add(butLogin, "3, 5, r, t");
 
         butLogin.addActionListener(createLoginActionListener());
 
