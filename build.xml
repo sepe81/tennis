@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<!-- Projekt definieren und Standardaktion festlegen -->
+<project name="Tennis" default="compile">
+  <!-- Verzeichnisse spezifizieren -->
+  <property name="src.dir" location="src" />
+  <property name="classes.dir" location="classes" />
+  <property name="build.dir" location="build" />
+  <property name="log.dir" location="log" />
+  <property name="doc.dir" location="docs" />
+
+  <!--
+  <property name="build.compiler" value="jikes"/>
+  <property name="build.compiler.pedantic" value="true"/>
+  <property name="build.depend" value="true"/>
+  -->
+
+  <!-- Classpath definieren -->
+  <path id="project.classpath">
+    <pathelement path="${classes.dir}" />
+    <pathelement location="/java/junit3.8.1/junit.jar" />
+    <pathelement location="lib/log4j-1.2.8.jar" />
+    <pathelement location="lib/looks.jar" />
+    <pathelement location="lib/TableLayout.jar" />
+  </path>
+
+  <!-- Compilieren mit Klassenpfad -->
+  <target name="compile" description="compiles all java files">
+    <mkdir dir="${classes.dir}" />
+    <javac srcdir="${src.dir}" destdir="${classes.dir}" deprecation="on">
+      <classpath>
+        <path refid="project.classpath" />
+      </classpath>
+    </javac>
+    <rmic classname="de.sepe.tennis.remote.server.ServerImpl"
+          base="${classes.dir}" />
+    <rmic classname="de.sepe.tennis.tests.TServerImpl"
+          base="${classes.dir}" />
+  </target>
+
+  <!-- JUnit -->
+  <target name="test" depends="compile">
+    <delete dir="${log.dir}" />
+    <mkdir dir="${log.dir}" />
+    <junit printsummary="on" haltonfailure="on">
+      <classpath refid="project.classpath" />
+      <test name="de.sepe.tennis.tests.PlayerTest" todir="${log.dir}" />
+      <test name="de.sepe.tennis.tests.TennisCourtTest"
+            todir="${log.dir}" />
+      <formatter type="xml" />
+    </junit>
+  </target>
+
+  <!-- Testauswertung -->
+  <target name="testreport" depends="test">
+    <junitreport todir="${log.dir}">
+      <fileset dir="${log.dir}" includes="TEST-*.xml" />
+      <report todir="${log.dir}" />
+    </junitreport>
+  </target>
+
+  <!-- Dokumentation erzeugen -->
+  <target name="docs" description="generates the documentation">
+    <delete dir="${doc.dir}" />
+    <mkdir dir="${doc.dir}" />
+    <javadoc packagenames="de.sepe.tennis.*"
+             sourcepath="${src.dir}"
+             destdir="${doc.dir}"
+             classpathref="project.classpath"
+             Private="true"
+             author="true"
+             version="true"
+             Use="true"
+             windowtitle="${ant.project.name} API"
+             Doctitle="${ant.project.name}"
+             bottom="Copyright &#169; 2003 Sebastian Peters. All Rights Reserved.">
+    </javadoc>
+  </target>
+
+  <!-- Jar erzeugen -->
+  <target name="jar" depends="compile" description="generates the jar-file">
+    <delete dir="${build.dir}" />
+    <mkdir dir="${build.dir}" />
+    <jar jarfile="build/tennis.jar" basedir="${classes.dir}">
+      <manifest>
+        <attribute name="Built-By" value="${user.name}" />
+        <attribute name="Main-Class" value="de.sepe.tennis.local.Tennis" />
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- App starten -->
+  <target name="run" depends="compile" description="start the application">
+    <java classname="de.sepe.tennis.local.Tennis" fork="true">
+      <classpath>
+        <path refid="project.classpath" />
+      </classpath>
+    </java>
+  </target>
+
+  <target name="prof" depends="compile" description="run with profiler">
+    <java classname="de.sepe.tennis.tests.TClient" fork="true">
+      <classpath>
+        <path refid="project.classpath" />
+      </classpath>
+      <jvmarg value="-Xrunhprof:cpu=samples,file=log.txt,depth=4" />
+    </java>
+  </target>
+
+  <!-- do all work -->
+  <target name="all" depends="compile, testreport, docs, jar" />
+</project>
