@@ -28,13 +28,13 @@ import javax.swing.KeyStroke;
 @SuppressWarnings("serial")
 public final class LoginDialog extends JDialog {
 
-    private JLabel labUser = new JLabel("User:");
-    private JLabel labPassword = new JLabel("Password:");
+    private final JLabel labUser = new JLabel("User:");
+    private final JLabel labPassword = new JLabel("Password:");
 
-    private JTextField txtUser = new JTextField(12);
-    private JPasswordField pwdPassword = new JPasswordField(12);
+    private final JTextField txtUser = new JTextField(12);
+    private final JPasswordField pwdPassword = new JPasswordField(12);
 
-    private JButton butLogin = new JButton("Login");
+    private final JButton butLogin = new JButton("Login");
 
     /** pressed ok? */
     private boolean ok = false;
@@ -56,7 +56,7 @@ public final class LoginDialog extends JDialog {
     private void initialize() {
         this.setResizable(false);
 
-        double sizes[][] = { { 5, TableLayoutConstants.PREFERRED, 5, TableLayoutConstants.FILL, 5 },
+        final double sizes[][] = { { 5, TableLayoutConstants.PREFERRED, 5, TableLayoutConstants.FILL, 5 },
                 { 5, TableLayoutConstants.PREFERRED, 5, TableLayoutConstants.PREFERRED, 5, TableLayoutConstants.PREFERRED, 5 } };
         this.getContentPane().setLayout(new TableLayout(sizes));
         this.getContentPane().add(labUser, "1, 1, r, t");
@@ -70,8 +70,8 @@ public final class LoginDialog extends JDialog {
         butLogin.addActionListener(createLoginActionListener());
 
         // register KeyboardActions since jdk1.4
-        InputMap im = getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-        ActionMap am = getRootPane().getActionMap();
+        final InputMap im = getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        final ActionMap am = getRootPane().getActionMap();
 
         im.put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "actExit");
         am.put("actExit", new AbstractAction() {

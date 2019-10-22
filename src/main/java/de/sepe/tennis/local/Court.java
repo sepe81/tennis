@@ -55,7 +55,7 @@ public class Court extends JPanel implements Runnable {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D) g;
+        final Graphics2D g2d = (Graphics2D) g;
 
         setAntiAliasing(g2d);
 
@@ -74,7 +74,7 @@ public class Court extends JPanel implements Runnable {
      * @param g2d der Grafikkontext
      */
     public void setAntiAliasing(Graphics2D g2d) {
-        RenderingHints renderHints = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        final RenderingHints renderHints = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         renderHints.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         g2d.setRenderingHints(renderHints);
     }
@@ -85,7 +85,7 @@ public class Court extends JPanel implements Runnable {
      * @param g Graphics2D
      */
     private void drawNet(Graphics2D g) {
-        Color oldColor = g.getColor();
+        final Color oldColor = g.getColor();
         g.setColor(Color.WHITE);
         g.setStroke(new BasicStroke(2));
 
@@ -122,7 +122,7 @@ public class Court extends JPanel implements Runnable {
      * Move the ball & check for hits or out of bounds.
      */
     private void animateBall() {
-        int status = ball.move();
+        final int status = ball.move();
         switch (status) {
         case 1:
             player2.incScore();
@@ -144,7 +144,7 @@ public class Court extends JPanel implements Runnable {
      */
     public void startGame() {
         if (player1 != null && player2 != null) {
-            Thread t = new Thread(this);
+            final Thread t = new Thread(this);
             t.start();
         }
     }
@@ -163,7 +163,7 @@ public class Court extends JPanel implements Runnable {
             repaint();
             try {
                 Thread.sleep(35);
-            } catch (InterruptedException e) {
+            } catch (final InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }

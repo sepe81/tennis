@@ -20,7 +20,7 @@ import de.sepe.tennis.remote.data.PlayerData;
 public class ServerImpl extends UnicastRemoteObject implements Server {
 
     /** all sessions on our server */
-    private Map<String, Session> sessions;
+    private final Map<String, Session> sessions;
 
     /**
      * Constructor.
@@ -80,7 +80,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
     }
 
     public static void main(String[] args) throws Exception {
-        ServerImpl serv = new ServerImpl();
+        final ServerImpl serv = new ServerImpl();
         Naming.rebind("tennisServer", serv);
         System.out.println("tennisServer bound in registry");
     }
