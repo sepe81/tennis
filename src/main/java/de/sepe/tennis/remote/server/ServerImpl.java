@@ -12,7 +12,7 @@ import de.sepe.tennis.remote.data.PlayerData;
 
 /**
  * Server Implementation.
- * 
+ *
  * @author Sebastian Peters
  * @since 15.12.2003
  */
@@ -24,12 +24,12 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 
     /**
      * Constructor.
-     * 
+     *
      * @throws RemoteException if failed to export object
      */
     public ServerImpl() throws RemoteException {
         super();
-        sessions = new HashMap<String, Session>();
+        sessions = new HashMap<>();
     }
 
     public boolean createSession(String name) throws RemoteException {
