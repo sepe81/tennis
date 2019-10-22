@@ -132,6 +132,7 @@ public final class Tennis extends JFrame {
      */
     protected ActionListener createExitActionListener() {
         return new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 Tennis.this.dispose();
                 System.exit(0);
@@ -146,6 +147,7 @@ public final class Tennis extends JFrame {
      */
     protected ActionListener createAboutActionListener() {
         return new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane
                         .showMessageDialog(Tennis.this, Tennis.TITLE + "\n\n\u00a9 2003 Sebastian Peters. " + "All Rights Reserved.\n\n");
@@ -160,6 +162,7 @@ public final class Tennis extends JFrame {
      */
     protected ActionListener createLoginActionListener() {
         return new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 final LoginDialog dia = new LoginDialog(Tennis.this);
                 dia.setVisible(true);

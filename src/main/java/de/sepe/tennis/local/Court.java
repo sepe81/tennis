@@ -152,6 +152,7 @@ public class Court extends JPanel implements Runnable {
     /**
      * Animate ball and players.
      */
+    @Override
     public void run() {
         this.gameStarted = true;
         Thread.currentThread().setPriority(Thread.MAX_PRIORITY);

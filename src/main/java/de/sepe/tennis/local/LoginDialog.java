@@ -75,6 +75,7 @@ public final class LoginDialog extends JDialog {
 
         im.put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "actExit");
         am.put("actExit", new AbstractAction() {
+            @Override
             public void actionPerformed(ActionEvent evt) {
                 LoginDialog.this.ok = false;
                 LoginDialog.this.dispose();
@@ -91,6 +92,7 @@ public final class LoginDialog extends JDialog {
      */
     private ActionListener createLoginActionListener() {
         return new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 LoginDialog.this.ok = true;
                 LoginDialog.this.dispose();

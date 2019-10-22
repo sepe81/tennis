@@ -85,6 +85,7 @@ public final class Controller implements KeyListener, Serializable {
     /**
      * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
      */
+    @Override
     public void keyTyped(KeyEvent e) {
         // not implemented
     }
@@ -92,6 +93,7 @@ public final class Controller implements KeyListener, Serializable {
     /**
      * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
      */
+    @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == eUp) {
             up = true;
@@ -111,6 +113,7 @@ public final class Controller implements KeyListener, Serializable {
     /**
      * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
      */
+    @Override
     public void keyReleased(KeyEvent e) {
         if (e.getKeyCode() == eUp) {
             up = false;

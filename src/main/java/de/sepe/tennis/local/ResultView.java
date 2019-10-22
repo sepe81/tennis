@@ -52,6 +52,7 @@ public class ResultView extends JPanel implements PropertyChangeListener {
         add(name2);
     }
 
+    @Override
     public void propertyChange(PropertyChangeEvent evt) {
         score1.setText(player1.getScore() + " ");
         score2.setText(" " + player2.getScore());
