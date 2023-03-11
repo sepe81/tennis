@@ -5,7 +5,6 @@ sourceCompatibility="1.8"
 targetCompatibility="1.8"
 
 jar {
-  baseName = "tennis"
   version =  "1.0.0-SNAPSHOT"
 }
 
@@ -13,12 +12,12 @@ repositories { mavenCentral() }
 dependencies {
   def slf4jVersion = "1.7.36"
 
-  compile "org.slf4j:slf4j-api:$slf4jVersion"
+  implementation "org.slf4j:slf4j-api:$slf4jVersion"
 
-  compile "tablelayout:TableLayout:20050920"
+  implementation "tablelayout:TableLayout:20050920"
 
-  runtime "org.slf4j:jcl-over-slf4j:$slf4jVersion",
+  runtimeOnly "org.slf4j:jcl-over-slf4j:$slf4jVersion",
           "ch.qos.logback:logback-classic:1.2.11"
 
-  testCompile "junit:junit:4.13.2"
+  testImplementation "junit:junit:4.13.2"
 }
