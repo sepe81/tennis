@@ -20,7 +20,7 @@ dependencies {
   runtime "org.slf4j:jcl-over-slf4j:$slf4jVersion",
           "ch.qos.logback:logback-classic:1.2.11"
 
-  testCompile "junit:junit:4.12"
+  testCompile "junit:junit:4.13.2"
 }
 
 task wrapper(type: Wrapper) { gradleVersion = "2.9" }
