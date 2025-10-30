@@ -10,6 +10,8 @@ import java.io.*;
  */
 public class PlayerData implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     public String name;
 
     public double x, y;

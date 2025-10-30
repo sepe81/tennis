@@ -11,6 +11,8 @@ import java.io.Serializable;
  */
 public final class Controller implements KeyListener, Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     // direction flags
     private boolean up, down, left, right;
 

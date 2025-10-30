@@ -10,6 +10,8 @@ import java.io.*;
  */
 public class BallData implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     public double x, y, width, height;
 
     /**
