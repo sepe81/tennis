@@ -17,7 +17,7 @@ import javax.swing.UIManager;
 
 /**
  * The mainframe of the tennis game.
- * 
+ *
  * @author Sebastian Peters
  */
 @SuppressWarnings("serial")
@@ -47,7 +47,7 @@ public final class Tennis extends JFrame {
         pack();
     }
 
-    protected void initialize() {
+    private void initialize() {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setJMenuBar(createMenuBar());
         setResizable(false);
@@ -74,11 +74,11 @@ public final class Tennis extends JFrame {
         setVisible(true);
     }
 
-    protected void startGame() {
+    private void startGame() {
         court.startGame();
     }
 
-    protected void setResultView(String name) {
+    private void setResultView(String name) {
         // 2 players
         this.player1 = new Player(name, Color.orange);
         this.player2 = new Player("Michael Stich");
@@ -98,7 +98,7 @@ public final class Tennis extends JFrame {
     /**
      * @return MenuBar
      */
-    protected JMenuBar createMenuBar() {
+    private JMenuBar createMenuBar() {
         final JMenuBar bar = new JMenuBar();
 
         final JMenu mFile = new JMenu("File");
@@ -127,10 +127,10 @@ public final class Tennis extends JFrame {
 
     /**
      * Exit selection.
-     * 
+     *
      * @return ActionListener
      */
-    protected ActionListener createExitActionListener() {
+    private ActionListener createExitActionListener() {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -142,10 +142,10 @@ public final class Tennis extends JFrame {
 
     /**
      * Show About Info.
-     * 
+     *
      * @return ActionListener
      */
-    protected ActionListener createAboutActionListener() {
+    private ActionListener createAboutActionListener() {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -157,10 +157,10 @@ public final class Tennis extends JFrame {
 
     /**
      * LoginActionListener
-     * 
+     *
      * @return ActionListener
      */
-    protected ActionListener createLoginActionListener() {
+    private ActionListener createLoginActionListener() {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
