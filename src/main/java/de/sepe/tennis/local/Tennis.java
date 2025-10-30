@@ -149,8 +149,8 @@ public final class Tennis extends JFrame {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane
-                        .showMessageDialog(Tennis.this, Tennis.TITLE + "\n\n\u00a9 2003 Sebastian Peters. " + "All Rights Reserved.\n\n");
+                JOptionPane.showMessageDialog(Tennis.this,
+                    Tennis.TITLE + "\n\n© 2003 Sebastian Peters. All Rights Reserved.\n\n");
             }
         };
     }
