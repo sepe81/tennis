@@ -21,11 +21,10 @@ import de.sepe.tennis.remote.data.BallData;
 
 /**
  * The court to play on.
- * 
+ *
  * @author Sebastian Peters
  * @since 15.12.2003
  */
-@SuppressWarnings("serial")
 public class Court extends JPanel implements Runnable {
 
     private static final Logger log = LoggerFactory.getLogger(Court.class);
@@ -132,7 +131,7 @@ public class Court extends JPanel implements Runnable {
 
     /**
      * Draw the net.
-     * 
+     *
      * @param g Graphics2D
      */
     private void drawNet(Graphics2D g) {
@@ -148,7 +147,7 @@ public class Court extends JPanel implements Runnable {
 
     /**
      * AntiAliasing für den jeweiligen Grafikkontext setzen.
-     * 
+     *
      * @param g2d der Grafikkontext
      */
     private void setAntiAliasing(Graphics2D g2d) {
@@ -159,7 +158,7 @@ public class Court extends JPanel implements Runnable {
 
     /**
      * Find a server.
-     * 
+     *
      * @throws Exception if no server could by found
      */
     private void findServer() throws Exception {

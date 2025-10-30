@@ -11,7 +11,6 @@ import javax.swing.JPanel;
  * 
  * @author Sebastian Peters
  */
-@SuppressWarnings("serial")
 public class ResultView extends JPanel implements PropertyChangeListener {
 
     private Player player1, player2;

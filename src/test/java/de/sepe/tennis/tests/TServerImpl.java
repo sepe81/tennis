@@ -10,7 +10,6 @@ import java.rmi.server.UnicastRemoteObject;
  * @author Sebastian Peters
  * @since 16.12.2003
  */
-@SuppressWarnings("serial")
 public class TServerImpl extends UnicastRemoteObject implements TServer {
 
     TPlayer player;

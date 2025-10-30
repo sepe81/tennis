@@ -16,7 +16,6 @@ import javax.swing.JPanel;
  * 
  * @author Sebastian Peters
  */
-@SuppressWarnings("serial")
 public class Court extends JPanel implements Runnable {
 
     public enum Type {

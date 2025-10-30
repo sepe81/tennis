@@ -9,7 +9,6 @@ import javax.swing.*;
  * 
  * @author Sebastian Peters
  */
-@SuppressWarnings("serial")
 public abstract class Game extends JFrame {
 
     /**

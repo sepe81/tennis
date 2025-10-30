@@ -8,7 +8,6 @@ import java.io.*;
  * @author Sebastian Peters
  * @since 16.12.2003
  */
-@SuppressWarnings("serial")
 public class PlayerData implements Serializable {
 
     public String name;

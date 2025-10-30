@@ -7,7 +7,6 @@ import javax.swing.*;
  * 
  * @author Sebastian Peters
  */
-@SuppressWarnings("serial")
 public class ResultView extends JPanel {
 
     private JLabel name1, name2;

@@ -23,7 +23,6 @@ import de.sepe.tennis.remote.data.PlayerData;
  * @author Sebastian Peters
  * @since 15.12.2003
  */
-@SuppressWarnings("serial")
 public class Tennis extends Game {
 
     private static final Logger log = LoggerFactory.getLogger(Tennis.class);

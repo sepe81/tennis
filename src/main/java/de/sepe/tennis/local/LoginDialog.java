@@ -25,7 +25,6 @@ import javax.swing.KeyStroke;
  * @author Sebastian Peters
  * @since 15.12.2003
  */
-@SuppressWarnings("serial")
 public final class LoginDialog extends JDialog {
 
     private final JLabel labUser = new JLabel("User:");

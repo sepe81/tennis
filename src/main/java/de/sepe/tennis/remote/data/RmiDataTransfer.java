@@ -8,7 +8,6 @@ import java.io.*;
  * @author Sebastian Peters
  * @since 17.12.2003
  */
-@SuppressWarnings("serial")
 public class RmiDataTransfer implements Serializable {
     public BallData ball;
 

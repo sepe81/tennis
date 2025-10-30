@@ -22,7 +22,6 @@ import javax.swing.UIManager;
  *
  * @author Sebastian Peters
  */
-@SuppressWarnings("serial")
 public final class Tennis extends JFrame {
 
     /** app title */

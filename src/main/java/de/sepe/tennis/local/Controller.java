@@ -9,7 +9,6 @@ import java.io.Serializable;
  * 
  * @author Sebastian Peters
  */
-@SuppressWarnings("serial")
 public final class Controller implements KeyListener, Serializable {
 
     // direction flags

@@ -17,7 +17,6 @@ import de.sepe.tennis.remote.data.PlayerData;
  * @author Sebastian Peters
  * @since 15.12.2003
  */
-@SuppressWarnings("serial")
 public class ServerImpl extends UnicastRemoteObject implements Server {
 
     /** all sessions on our server */
