@@ -8,6 +8,18 @@ java {
 
 jar {
   version =  "1.0.0-SNAPSHOT"
+  manifest {
+    attributes(
+      'Main-Class': 'de.sepe.tennis.local.Tennis',
+      'Built-By': System.getProperty('user.name')
+    )
+  }
+  // Include all runtime dependencies in the JAR (create a fat JAR)
+  from {
+    configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+  }
+  // Exclude duplicate files
+  duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
 repositories { mavenCentral() }
