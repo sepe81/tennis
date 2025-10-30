@@ -132,7 +132,7 @@ public class Tennis extends Game {
 
     public static void main(String[] args) {
         try {
-            UIManager.setLookAndFeel("com.jgoodies.plaf.plastic.Plastic3DLookAndFeel");
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (final Exception e) {
             System.err.println("could not set look and feel: " + e.getMessage());
         }
