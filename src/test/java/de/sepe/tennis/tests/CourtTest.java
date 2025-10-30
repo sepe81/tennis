@@ -7,7 +7,7 @@ import de.sepe.tennis.local.Court;
 
 /**
  * tests the Court class.
- * 
+ *
  * @author Sebastian Peters
  * @since 21.02.2003
  */
@@ -30,12 +30,12 @@ public class CourtTest extends TestCase {
     }
 
     public void testCourtType() {
-        assertTrue(court.getBackground() == Color.white);
+        assertSame(Color.white, court.getBackground());
         court.setCourtType(Court.Type.GRASS);
-        assertTrue(court.getBackground() == Color.green);
+        assertSame(Color.green, court.getBackground());
         court.setCourtType(Court.Type.HARD);
-        assertTrue(court.getBackground() == Color.red);
+        assertSame(Color.red, court.getBackground());
         court.setCourtType(Court.Type.SAND);
-        assertTrue(court.getBackground() == Color.yellow);
+        assertSame(Color.yellow, court.getBackground());
     }
 }

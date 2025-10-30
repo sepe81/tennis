@@ -5,7 +5,7 @@ import de.sepe.tennis.local.Player;
 
 /**
  * tests the Player class.
- * 
+ *
  * @author Sebastian Peters
  * @since 12.02.2003
  */
@@ -33,8 +33,8 @@ public class PlayerTest extends TestCase {
     public void testSetter() {
         final String n = "Rothaar";
         p1.setName(n);
-        assertEquals(p1.getName(), n);
-        p2.setName("André Agasi");
-        assertEquals(p2.getName(), "André Agasi");
+        assertEquals(n, p1.getName());
+        p2.setName("Andre Agassi");
+        assertEquals("Andre Agassi", p2.getName());
     }
 }
