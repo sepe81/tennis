@@ -2,6 +2,7 @@ package de.sepe.tennis.remote.server;
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.HashMap;
 import java.util.Map;
@@ -89,9 +90,25 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
     }
 
     public static void main(String[] args) throws Exception {
+        // Create an RMI registry in the same JVM on port 1099
+        // This ensures the registry has access to all classes on the classpath
+        try {
+            LocateRegistry.createRegistry(1099);
+            System.out.println("RMI registry created on port 1099");
+        } catch (RemoteException e) {
+            // Registry already running
+            System.out.println("RMI registry already running on port 1099");
+        }
+
+        // Create and bind the server
         final ServerImpl serv = new ServerImpl();
         Naming.rebind("tennisServer", serv);
         System.out.println("tennisServer bound in registry");
+        System.out.println("Server ready and waiting for connections...");
+        System.out.println("Press Ctrl+C to stop.");
+
+        // Keep the server running
+        Thread.currentThread().join();
     }
 
     public boolean startSession(String name) throws RemoteException {
