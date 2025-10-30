@@ -42,7 +42,13 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
     }
 
     public boolean removeSession(String name) throws RemoteException {
-        return sessions.remove(name) != null ? true : false;
+        Session session = sessions.get(name);
+        if (session != null) {
+            session.setSessionInactive();
+            sessions.remove(name);
+            return true;
+        }
+        return false;
     }
 
     public Map<String, Session> getSessions() {
@@ -50,6 +56,9 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
     }
 
     public void clearSessions() throws RemoteException {
+        for (Session session : sessions.values()) {
+            session.setSessionInactive();
+        }
         sessions.clear();
     }
 

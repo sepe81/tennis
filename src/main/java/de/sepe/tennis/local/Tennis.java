@@ -7,6 +7,8 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -48,7 +50,8 @@ public final class Tennis extends JFrame {
     }
 
     private void initialize() {
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        addWindowListener(createWindowListener());
         setJMenuBar(createMenuBar());
         setResizable(false);
 
@@ -134,10 +137,32 @@ public final class Tennis extends JFrame {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Tennis.this.dispose();
-                System.exit(0);
+                exitApplication();
             }
         };
+    }
+
+    /**
+     * Create window listener for cleanup.
+     *
+     * @return WindowAdapter
+     */
+    private WindowAdapter createWindowListener() {
+        return new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                exitApplication();
+            }
+        };
+    }
+
+    /**
+     * Cleanup and exit application.
+     */
+    private void exitApplication() {
+        court.stopGame();
+        Tennis.this.dispose();
+        System.exit(0);
     }
 
     /**

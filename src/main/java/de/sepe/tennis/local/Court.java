@@ -32,6 +32,9 @@ public class Court extends JPanel implements Runnable {
     /** game flag */
     private boolean gameStarted = false;
 
+    /** game thread */
+    private Thread gameThread;
+
     /**
      * Constructor.
      */
@@ -144,8 +147,19 @@ public class Court extends JPanel implements Runnable {
      */
     public void startGame() {
         if (player1 != null && player2 != null) {
-            final Thread t = new Thread(this);
-            t.start();
+            gameThread = new Thread(this);
+            gameThread.start();
+        }
+    }
+
+    /**
+     * Stop the game gracefully.
+     */
+    public void stopGame() {
+        gameStarted = false;
+        if (gameThread != null && gameThread.isAlive()) {
+            gameThread.interrupt();
+            gameThread = null;
         }
     }
 
@@ -156,7 +170,7 @@ public class Court extends JPanel implements Runnable {
     public void run() {
         this.gameStarted = true;
         Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
-        while (true) {
+        while (gameStarted && !Thread.currentThread().isInterrupted()) {
             animateBall();
             player1.animate();
             player2.animate();
@@ -164,9 +178,12 @@ public class Court extends JPanel implements Runnable {
             try {
                 Thread.sleep(35);
             } catch (final InterruptedException e) {
-                throw new RuntimeException(e);
+                // Restore interrupt status and exit gracefully
+                Thread.currentThread().interrupt();
+                break;
             }
         }
+        this.gameStarted = false;
     }
 
     /**

@@ -17,6 +17,9 @@ public class Session implements Runnable {
     /** session is active and once set to inactive */
     private boolean sessionActive = true;
 
+    /** session thread */
+    private Thread sessionThread;
+
     /** the initial player */
     private final Player initiator;
 
@@ -53,10 +56,14 @@ public class Session implements Runnable {
     }
 
     /**
-     * Stop the session.
+     * Stop the session gracefully.
      */
     public void setSessionInactive() {
         sessionActive = false;
+        if (sessionThread != null && sessionThread.isAlive()) {
+            sessionThread.interrupt();
+            sessionThread = null;
+        }
     }
 
     /**
@@ -128,19 +135,22 @@ public class Session implements Runnable {
             return false;
         }
 
-        Thread t = new Thread(this);
-        t.start();
+        sessionThread = new Thread(this);
+        sessionThread.start();
         return true;
     }
 
     public void run() {
-        while (true) {
+        while (sessionActive && !Thread.currentThread().isInterrupted()) {
             animateBall();
             try {
                 Thread.sleep(30);
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                // Restore interrupt status and exit gracefully
+                Thread.currentThread().interrupt();
+                break;
             }
         }
+        this.sessionActive = false;
     }
 }
