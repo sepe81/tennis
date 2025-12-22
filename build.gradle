@@ -31,7 +31,7 @@ dependencies {
   implementation "tablelayout:TableLayout:20050920"
 
   runtimeOnly "org.slf4j:jcl-over-slf4j:$slf4jVersion",
-          "ch.qos.logback:logback-classic:1.5.22"
+          "ch.qos.logback:logback-classic:1.5.23"
 
   testImplementation "junit:junit:4.13.2"
 }
